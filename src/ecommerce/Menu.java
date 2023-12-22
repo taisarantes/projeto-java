@@ -1,5 +1,6 @@
 package ecommerce;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import ecommerce.controller.ProdutoController;
@@ -19,9 +20,15 @@ public class Menu {
 		exibirMenu();
 		do {
 			System.out.print("\nDigite a opção desejada: ");
-			opcao = leia.nextInt();
-			leia.nextLine();
 			
+			try {
+				opcao = leia.nextInt();
+				leia.nextLine();
+			}catch(InputMismatchException e){
+				System.out.println("\nDigite valores inteiros!");
+				leia.nextLine();
+				opcao=0;
+			}
 			
 			switch(opcao) {
 			case 1:
